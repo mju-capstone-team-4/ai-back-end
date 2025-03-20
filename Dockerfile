@@ -6,7 +6,7 @@ WORKDIR /app
 
 # 필요한 파일들 복사
 COPY requirements.txt .
-COPY app.py .
+COPY main.py .
 COPY trained_model.keras .
 
 # 필요한 패키지 설치
