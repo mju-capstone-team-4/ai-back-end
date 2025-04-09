@@ -84,19 +84,19 @@ def predict_image(image_url):
     confidence = float(np.max(prediction))  # 확률값 변환 (JSON 직렬화 가능하도록)
     
     print("-" * 50)
-    print("각 확률값: " + prediction)
+    print("모든 확률값:", prediction)
     print("-" * 50)
 
     print("-" * 50)
-    print("확률값: " + confidence)
+    print("정확도:", confidence)
     print("-" * 50)
 
     print("-" * 50)
-    print("index: " + result_index)
+    print("인덱스:", result_index)
     print("-" * 50)
 
     print("-" * 50)
-    predict("diagnosis: " + class_name_ko[result_index])
+    predict("인덱스:" + class_name_ko[result_index])
     print("-" * 50)
 
     # return predict_top_3_classes(input_arr)
