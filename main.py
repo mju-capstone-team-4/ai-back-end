@@ -53,6 +53,60 @@ class_name = [
     'Tomato___healthy'
 ]
 
+class_name_ko = [
+    '사과_겹무늬썩음병',
+    '사과_검은썩음병',
+    '사과_적갈색무늬병',
+    '사과_정상',
+
+    '블루베리_정상',
+
+    '체리_흰가루병',
+    '체리_정상',
+
+    '옥수수_세르코스포라잎마름병_회색잎무늬병',
+    '옥수수_일반녹병',
+    '옥수수_북부잎마름병',
+    '옥수수_정상',
+
+    '포도_검은썩음병',
+    '포도_에스카병(블랙미즐병)',
+    '포도_잎마름병(이사리옵시스잎반점병)',
+    '포도_정상',
+
+    '오렌지_황룡병(감귤그리닝병)',
+
+    '복숭아_세균성반점병',
+    '복숭아_정상',
+
+    '피망_세균성반점병',
+    '피망_정상',
+
+    '감자_초기역병',
+    '감자_후기역병',
+    '감자_정상',
+
+    '라즈베리_정상',
+
+    '대두_정상',
+
+    '호박_흰가루병',
+
+    '딸기_잎마름병',
+    '딸기_정상',
+
+    '토마토_세균성반점병',
+    '토마토_초기역병',
+    '토마토_후기역병',
+    '토마토_잎곰팡이병',
+    '토마토_점무늬잎반점병',
+    '토마토_거미진드기(두점박이거미진드기)',
+    '토마토_표적반점병',
+    '토마토_황화잎말림바이러스',
+    '토마토_모자이크바이러스',
+    '토마토_정상'
+]
+
 # 이미지 예측 함수
 def predict_image(image_url):
     response = requests.get(image_url)
@@ -68,15 +122,13 @@ def predict_image(image_url):
     input_arr = tf.keras.preprocessing.image.img_to_array(image)
     input_arr = np.array([input_arr])  # Convert single image to a batch
     prediction = model.predict(input_arr)
-    print(prediction)
     result_index = np.argmax(prediction)
-    print(result_index)
-    #confidence = np.max(prediction)  # 확률값 변환 (JSON 직렬화 가능하도록)
     confidence = float(np.max(prediction))  # 확률값 변환 (JSON 직렬화 가능하도록)
     
-
+    print(prediction)
+    print(result_index)
     # return predict_top_3_classes(input_arr)
-    return class_name[result_index], confidence
+    return class_name_ko[result_index], confidence
     
 
 # 요청 모델
@@ -84,12 +136,11 @@ class ImageURLRequest(BaseModel):
     image_url: str
 
 # API 라우트 설정
-
 @app.post("/predict/")
 async def predict(data: ImageURLRequest):
     try:
         predicted_class, confidence = predict_image(data.image_url)
-        return {"prediction": predicted_class, "confidence": confidence}
+        return {"result": predicted_class, "confidence": confidence}
     except Exception as e:
         return {"error": str(e)}
 
