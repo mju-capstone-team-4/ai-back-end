@@ -11,48 +11,6 @@ app = FastAPI()
 # 모델 로드
 model = tf.keras.models.load_model("trained_model.keras")
 
-# 클래스 이름 리스트 (한글 번역 적용 가능)
-class_name = [
-    'Apple___Apple_scab', 
-    'Apple___Black_rot', 
-    'Apple___Cedar_apple_rust', 
-    'Apple___healthy',
-    'Blueberry___healthy', 
-    'Cherry_(including_sour)___Powdery_mildew', 
-    'Cherry_(including_sour)___healthy',
-    'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 
-    'Corn_(maize)___Common_rust_', 
-    'Corn_(maize)___Northern_Leaf_Blight',
-    'Corn_(maize)___healthy', 
-    'Grape___Black_rot', 
-    'Grape___Esca_(Black_Measles)', 
-    'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)',
-    'Grape___healthy', 
-    'Orange___Haunglongbing_(Citrus_greening)', 
-    'Peach___Bacterial_spot', 
-    'Peach___healthy',
-    'Pepper,_bell___Bacterial_spot', 
-    'Pepper,_bell___healthy', 
-    'Potato___Early_blight', 
-    'Potato___Late_blight',
-    'Potato___healthy', 
-    'Raspberry___healthy', 
-    'Soybean___healthy', 
-    'Squash___Powdery_mildew',
-    'Strawberry___Leaf_scorch', 
-    'Strawberry___healthy', 
-    'Tomato___Bacterial_spot', 
-    'Tomato___Early_blight',
-    'Tomato___Late_blight', 
-    'Tomato___Leaf_Mold', 
-    'Tomato___Septoria_leaf_spot', 
-    'Tomato___Spider_mites Two-spotted_spider_mite',
-    'Tomato___Target_Spot', 
-    'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 
-    'Tomato___Tomato_mosaic_virus', 
-    'Tomato___healthy'
-]
-
 class_name_ko = [
     '사과_겹무늬썩음병',
     '사과_검은썩음병',
@@ -125,8 +83,22 @@ def predict_image(image_url):
     result_index = np.argmax(prediction)
     confidence = float(np.max(prediction))  # 확률값 변환 (JSON 직렬화 가능하도록)
     
-    print(prediction)
-    print(result_index)
+    print("-" * 50)
+    print("각 확률값: " + prediction)
+    print("-" * 50)
+
+    print("-" * 50)
+    print("확률값: " + confidence)
+    print("-" * 50)
+
+    print("-" * 50)
+    print("index: " + result_index)
+    print("-" * 50)
+
+    print("-" * 50)
+    predict("diagnosis: " + class_name_ko[result_index])
+    print("-" * 50)
+
     # return predict_top_3_classes(input_arr)
     return class_name_ko[result_index], confidence
     
