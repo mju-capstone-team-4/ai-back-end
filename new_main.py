@@ -9,7 +9,7 @@ import numpy as np
 app = FastAPI()
 
 # 모델 로드
-model = tf.keras.models.load_model("third_trained_model.keras")
+model = tf.keras.models.load_model("fourth_trained_model.keras")
 
 class_name_ko = [
     '옥수수_세르코스포라잎마름병_회색잎마름병',
@@ -19,10 +19,6 @@ class_name_ko = [
     '포도_검은썩음병',
     '포도_에스카병(흑색홍반병)',
     '포도_정상',
-
-    '상추_세균병',
-    '상추_곰팡이병',
-    '상추_정상',
 
     '오렌지_황룡병(감귤그리닝병)',
 
