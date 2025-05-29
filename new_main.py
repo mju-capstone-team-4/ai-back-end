@@ -9,7 +9,7 @@ import numpy as np
 app = FastAPI()
 
 # 모델 로드
-model = tf.keras.models.load_model("fourth_trained_model.keras")
+model = tf.keras.models.load_model("fifth_trained_model.keras")
 
 class_name_ko = [
 
