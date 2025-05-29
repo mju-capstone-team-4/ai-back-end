@@ -7,7 +7,7 @@ WORKDIR /app
 # 필요한 파일들 복사
 COPY requirements.txt .
 COPY new_main.py .
-COPY fourth_trained_model.keras .
+COPY fifth_trained_model.keras .
 
 # 필요한 패키지 설치
 RUN pip install --no-cache-dir -r requirements.txt

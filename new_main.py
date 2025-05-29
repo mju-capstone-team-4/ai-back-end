@@ -12,9 +12,6 @@ app = FastAPI()
 model = tf.keras.models.load_model("fourth_trained_model.keras")
 
 class_name_ko = [
-    '옥수수_세르코스포라잎마름병_회색잎마름병',
-    '옥수수_일반녹병',
-    '옥수수_정상',
 
     '포도_검은썩음병',
     '포도_에스카병(흑색홍반병)',
