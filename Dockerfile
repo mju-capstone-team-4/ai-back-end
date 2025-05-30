@@ -6,7 +6,7 @@ WORKDIR /app
 
 # 필요한 파일들 복사
 COPY requirements.txt .
-COPY new_main.py .
+COPY test.py .
 COPY ./model/fifth_trained_model.keras .
 COPY ./model/corn_trained_model.keras .
 COPY ./model/grape_trained_model.keras .
