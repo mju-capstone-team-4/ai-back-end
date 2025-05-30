@@ -71,7 +71,7 @@ def predict_image(image_url):
     print("-" * 50)
 
     print("-" * 50)
-    predict("인덱스:" + class_name_ko[result_index])
+    print("인덱스:" + class_name_ko[result_index])
     print("-" * 50)
 
     # return predict_top_3_classes(input_arr)

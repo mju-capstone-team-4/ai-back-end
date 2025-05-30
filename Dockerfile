@@ -7,10 +7,14 @@ WORKDIR /app
 # 필요한 파일들 복사
 COPY requirements.txt .
 COPY new_main.py .
-COPY fifth_trained_model.keras .
+COPY ./model/fifth_trained_model.keras .
+COPY ./model/corn_trained_model.keras .
+COPY ./model/grape_trained_model.keras .
+COPY ./model/orange_trained_model.keras .
+COPY ./model/tomato_trained_model.keras .
 
 # 필요한 패키지 설치
 RUN pip install --no-cache-dir -r requirements.txt
 
 # FastAPI 서버 실행
-CMD ["uvicorn", "new_main:app", "--host", "0.0.0.0", "--port", "8020"]
+CMD ["uvicorn", "test:app", "--host", "0.0.0.0", "--port", "8020"]
