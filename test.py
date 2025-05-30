@@ -84,7 +84,7 @@ def predict_image(image_url, fruit):
     image = tf.keras.preprocessing.image.load_img("temp_image.jpg", target_size=(128, 128))
     input_arr = tf.keras.preprocessing.image.img_to_array(image)
     input_arr = np.array([input_arr])  # Convert single image to a batch
-
+    print("target: " + fruit)
     if(fruit == '토마토'):
         prediction = tomato_model(input_arr)
         result_index = np.argmax(prediction) + 12

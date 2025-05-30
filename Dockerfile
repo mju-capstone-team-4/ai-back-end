@@ -10,7 +10,7 @@ COPY new_main.py .
 COPY ./model/fifth_trained_model.keras .
 COPY ./model/corn_trained_model.keras .
 COPY ./model/grape_trained_model.keras .
-COPY ./model/orange_trained_model.keras .
+COPY ./model/orange_watermelon_trained_model.keras .
 COPY ./model/tomato_trained_model.keras .
 
 # 필요한 패키지 설치
